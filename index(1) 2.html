@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang='ms'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Lucky Draw</title><style>
+body{margin:0;font-family:Arial;background:linear-gradient(180deg,#000,#3b2a00,#000);color:#fff;text-align:center}
+.wrap{max-width:430px;margin:auto;padding:20px}.logo{width:90px;height:90px;border:2px solid gold;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:10px auto;color:gold}
+input,button{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none}button{background:gold;font-weight:bold}
+#grid{display:none;grid-template-columns:repeat(4,1fr);gap:8px}.b{height:70px;background:#222;border:2px solid gold;border-radius:8px;font-size:30px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#pop{display:none;position:fixed;inset:0;background:#000a;align-items:center;justify-content:center}.card{background:#111;border:2px solid gold;border-radius:12px;padding:20px;width:85%}
+</style></head><body><div class='wrap'><div class='logo'>LOGO</div><h2>🎁 Lucky Draw 🎁</h2>
+<input id=n placeholder='Nama Penuh'><input id=t placeholder='No Telefon'><button onclick='start()'>MULA CABUTAN</button>
+<div id=grid><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div><div class='b'>🎁</div></div></div>
+<div id=pop><div class=card><h3>Tahniah!</h3><div id=res style='font-size:22px;color:gold'></div><p>📸 Sila Screen Shot dan Send Pada Admin Anda</p><button onclick='location.reload()'>Tutup</button></div></div>
+<script>
+const pool=[
+...Array(75).fill("Harap Maaf Jumpa Lagi"),
+...Array(8).fill("Discount 5%"),
+...Array(5).fill("Discount 10%"),
+...Array(4).fill("Cash RM10"),
+...Array(3).fill("Cash RM20"),
+...Array(2).fill("Cash RM30"),
+"Free Minyak 10L","50% T&S (Tambah 1 Hari, Hari Ke-4 Bayar 50%)","60% T&S (Tambah 1 Hari, Hari Ke-4 Bayar 60%)","🏆 Free 1 Hari (Sewa 5 Hari Ke Atas Sahaja)"
+];
+let played=false;
+function start(){if(!n.value||!t.value){alert('Isi Nama & No Telefon');return;}grid.style.display='grid';}
+document.querySelectorAll('.b').forEach(x=>x.onclick=()=>{if(played)return;played=true;x.textContent='⏳';setTimeout(()=>{res.innerHTML=pool[Math.floor(Math.random()*pool.length)];pop.style.display='flex';document.querySelectorAll('.b').forEach(e=>e.style.pointerEvents='none');},800);});
+</script></body></html>

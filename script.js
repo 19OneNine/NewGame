@@ -1,0 +1,4 @@
+const hadiah=["RM10 TNG","Voucher Petrol","Diskaun Sewa"];
+let started=false;
+function mula(){if(!nama.value||!phone.value){alert("Isi maklumat.");return;}started=true;grid.innerHTML="";msg.innerHTML="Pilih SATU kotak";for(let i=0;i<9;i++){let d=document.createElement("div");d.className="box";d.textContent="🎁";d.onclick=()=>pick(d);grid.appendChild(d);}}
+function pick(el){if(!started)return;started=false;let menang=Math.random()<0.3;if(menang){el.textContent="🏆";msg.innerHTML="🎉 Tahniah! Anda menang "+hadiah[Math.floor(Math.random()*hadiah.length)];}else{el.textContent="❌";msg.innerHTML="😔 Maaf, tiada hadiah kali ini.";}[...grid.children].forEach(c=>c.onclick=null);}

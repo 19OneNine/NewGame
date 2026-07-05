@@ -1,0 +1,1 @@
+Buka index.html dalam pelayar. Edit script.js untuk ubah kadar menang dan senarai hadiah.
